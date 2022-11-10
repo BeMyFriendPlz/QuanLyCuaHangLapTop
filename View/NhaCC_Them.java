@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package codeptit.quanlycuahangmaytinh.View;
+package codeptit.QuanLyCuaHangLapTop.View;
 
-import codeptit.quanlycuahangmaytinh.Model.NhaCungCap;
+import codeptit.QuanLyCuaHangLapTop.Model.NhaCungCap;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -13,13 +13,13 @@ import javax.swing.JOptionPane;
  *
  * @author Admin
  */
-public class ThemNCC extends javax.swing.JFrame {
+public class NhaCC_Them extends javax.swing.JFrame {
     private ArrayList<NhaCungCap> list;
     private NhaCungCap ncc;
     /**
      * Creates new form ThemKH
      */
-    public ThemNCC(ArrayList<NhaCungCap> list) {
+    public NhaCC_Them(ArrayList<NhaCungCap> list) {
         this.list = list;
         initComponents();
     }
@@ -128,12 +128,8 @@ public class ThemNCC extends javax.swing.JFrame {
     private void jButton_ThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThemActionPerformed
         // TODO add your handling code here:
         String maNCC;
-        if(list.size() == 0) {
-            maNCC = "001";
-        } else {
-            maNCC = String.valueOf(++DanhMucNhaCCView.soMNCC);
-            while (maNCC.length() < 3) maNCC = "0" + maNCC;
-        }
+        maNCC = String.valueOf(++NhaCC_DanhMucView.soMNCC);
+        while (maNCC.length() < 3) maNCC = "0" + maNCC;
         maNCC = "NCC" + maNCC;
         String tenNCC = jTextField_TenNCC.getText();
         if(tenNCC == "") {
@@ -141,8 +137,8 @@ public class ThemNCC extends javax.swing.JFrame {
         } else {
             ncc = new NhaCungCap(maNCC, tenNCC);
             list.add(ncc);
-            DanhMucNhaCCView.showNCC(list);
-            DanhMucNhaCCView.jButton_Luu.setEnabled(true);
+            NhaCC_DanhMucView.showNCC(list);
+            NhaCC_DanhMucView.jButton_Luu.setEnabled(true);
             JOptionPane.showMessageDialog(null, "Đã thêm nhà cung cấp thành công!", "Nhập dữ liệu thành công", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_jButton_ThemActionPerformed

@@ -1,4 +1,4 @@
-package codeptit.quanlycuahangmaytinh.Model;
+package codeptit.QuanLyCuaHangLapTop.Model;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -160,5 +160,64 @@ public class NhanVien {
             e.printStackTrace();
         }
         return list;
+    }
+    
+    public void nhapDuLieuNhanVien() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+        try {
+            String connectionUrl = "jdbc:sqlserver://localhost:1433;DatabaseName=DBComputerStore;user=sa;password=123456;encrypt=true;trustServerCertificate=true";
+            con = DriverManager.getConnection(connectionUrl);
+            String sql = "INSERT INTO tblNhanVien VALUES (?,?,?,?,?,?,?)";
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, maNV);
+            pst.setString(2, tenNV);
+            pst.setString(3, gioiTinh);
+            pst.setString(4, sdf.format(ngaySinh));
+            pst.setString(5, diaChi);
+            pst.setString(6, dienThoai);
+            pst.setLong(7, luong);
+            pst.executeUpdate();
+            pst.close();
+            con.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    public void suaDuLieuNhanVien() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+        try {
+            String connectionUrl = "jdbc:sqlserver://localhost:1433;DatabaseName=DBComputerStore;user=sa;password=123456;encrypt=true;trustServerCertificate=true";
+            con = DriverManager.getConnection(connectionUrl);
+            String sql = "UPDATE tblNhanVien SET TenNV = ?, GioiTinh = ?, NgaySinh = ?, DiaChi = ?, DienThoai = ?, Luong = ? WHERE MaNV = ?";
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, tenNV);
+            pst.setString(2, gioiTinh);
+            pst.setString(3, sdf.format(ngaySinh));
+            pst.setString(4, diaChi);
+            pst.setString(5, dienThoai);
+            pst.setLong(6, luong);
+            pst.setString(7, maNV);
+            pst.executeUpdate();
+            pst.close();
+            con.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    public static void xoaDuLieuNhanVien(String maNV) {
+        try {
+            String connectionUrl = "jdbc:sqlserver://localhost:1433;DatabaseName=DBComputerStore;user=sa;password=123456;encrypt=true;trustServerCertificate=true";
+            Connection con = DriverManager.getConnection(connectionUrl);
+            String sql = "DELETE FROM tblNhanVien WHERE MaNV = ?";
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, maNV);
+            pst.executeUpdate();
+            pst.close();
+            con.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
 }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package codeptit.quanlycuahangmaytinh.Model;
+package codeptit.QuanLyCuaHangLapTop.Model;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -50,6 +50,37 @@ public class NhaCungCap {
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, maNCC);
             pst.setString(2, tenNCC);
+            pst.executeUpdate();
+            pst.close();
+            con.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    public void suaDuLieuNCC() {
+        try {
+            String connectionUrl = "jdbc:sqlserver://localhost:1433;DatabaseName=DBComputerStore;user=sa;password=123456;encrypt=true;trustServerCertificate=true";
+            con = DriverManager.getConnection(connectionUrl);
+            String sql = "UPDATE tblNhaCC SET TenNCC = ? WHERE MaNCC = ?";
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, tenNCC);
+            pst.setString(2, maNCC);
+            pst.executeUpdate();
+            pst.close();
+            con.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    public static void xoaDuLieuNCC(String maNCC) {
+        try {
+            String connectionUrl = "jdbc:sqlserver://localhost:1433;DatabaseName=DBComputerStore;user=sa;password=123456;encrypt=true;trustServerCertificate=true";
+            Connection con = DriverManager.getConnection(connectionUrl);
+            String sql = "DELETE FROM tblNhaCC WHERE MaNCC = ?";
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, maNCC);
             pst.executeUpdate();
             pst.close();
             con.close();

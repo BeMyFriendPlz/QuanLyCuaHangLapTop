@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package codeptit.quanlycuahangmaytinh.View;
+package codeptit.QuanLyCuaHangLapTop.View;
 
-import codeptit.quanlycuahangmaytinh.Model.TaiKhoan;
+import codeptit.QuanLyCuaHangLapTop.Model.TaiKhoan;
 import javax.swing.JOptionPane;
 
 /**
@@ -201,8 +201,12 @@ public class LoginSysView extends javax.swing.JFrame {
         taiKhoan.setTenTK(tk);
         taiKhoan.setMatKhau(mk);
         if(taiKhoan.kiemTraDangNhap()) {
-            if(tk.equals("Admin")) {
-                JOptionPane.showMessageDialog(null, "Đăng nhập Admin thành công!", "Congratuation", JOptionPane.INFORMATION_MESSAGE);
+            TaiKhoan temp = TaiKhoan.layTaiKhoan(tk);
+            if(temp.getMaTK().contains("ADMIN")) {
+                dispose();
+                MainAdminView mainAdminView = new MainAdminView(tk);
+                mainAdminView.setLocationRelativeTo(null);
+                mainAdminView.setVisible(true);
             } else {
                 dispose();
                 MainUserView mainUserView = new MainUserView(tk);

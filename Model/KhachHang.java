@@ -1,4 +1,4 @@
-package codeptit.quanlycuahangmaytinh.Model;
+package codeptit.QuanLyCuaHangLapTop.Model;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -67,7 +67,40 @@ public class KhachHang {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-    }        
+    }      
+    
+    public void suaDuLieuKhach() {
+        try {
+            String connectionUrl = "jdbc:sqlserver://localhost:1433;DatabaseName=DBComputerStore;user=sa;password=123456;encrypt=true;trustServerCertificate=true";
+            con = DriverManager.getConnection(connectionUrl);
+            String sql = "UPDATE tblKhach SET TenKH = ?, DiaChi = ?, DienThoai = ? WHERE MaKH = ?";
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, tenKH);
+            pst.setString(2, diaChi);
+            pst.setString(3, dienThoai);
+            pst.setString(4, maKH);
+            pst.executeUpdate();
+            pst.close();
+            con.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    public static void xoaDuLieuKhach(String maKH) {
+        try {
+            String connectionUrl = "jdbc:sqlserver://localhost:1433;DatabaseName=DBComputerStore;user=sa;password=123456;encrypt=true;trustServerCertificate=true";
+            Connection con = DriverManager.getConnection(connectionUrl);
+            String sql = "DELETE FROM tblKhach WHERE MaKH = ?";
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, maKH);
+            pst.executeUpdate();
+            pst.close();
+            con.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
     
     public static ArrayList<KhachHang> khachList() {
         ArrayList<KhachHang> list = new ArrayList<>();

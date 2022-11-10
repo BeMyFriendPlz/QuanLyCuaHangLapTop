@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package codeptit.quanlycuahangmaytinh.View;
+package codeptit.QuanLyCuaHangLapTop.View;
 
-import codeptit.quanlycuahangmaytinh.Model.KhachHang;
+import codeptit.QuanLyCuaHangLapTop.Model.KhachHang;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -22,15 +22,23 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Admin
  */
-public class DanhMucKHView extends javax.swing.JFrame {
+public class Khach_DanhMucView extends javax.swing.JFrame {
     private ArrayList<KhachHang> list;
+    private int listSize;
+    private List<String> maXoa;
     static int soMKH;
     /**
      * Creates new form DanhMucKHView
      */
-    public DanhMucKHView() {
+    public Khach_DanhMucView() {
         this.list = KhachHang.khachList();
-        soMKH = Integer.valueOf(list.get(list.size()-1).getMaKH().substring(2,5));
+        maXoa = new ArrayList<>();
+        listSize = list.size();
+        if(list.isEmpty()) {
+            soMKH = 0;
+        } else {
+            soMKH = Integer.valueOf(list.get(list.size()-1).getMaKH().substring(2,5));
+        }
         initComponents();
         showKhach(list);
         jTextField_MaKH.setEditable(false);
@@ -109,7 +117,7 @@ public class DanhMucKHView extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(153, 0, 153));
-        jLabel6.setText("Mã khách");
+        jLabel6.setText("Mã khách:");
 
         jTextField_MaKH.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
@@ -238,6 +246,37 @@ public class DanhMucKHView extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(161, 161, 161)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(128, 128, 128)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 633, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel6))
+                        .addGap(28, 28, 28)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField_MaKH, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField_TenKH, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(79, 79, 79)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(61, 61, 61)
+                                .addComponent(jTextField_DiaChiKH, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextField_SDTKH, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(11, 11, 11))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addComponent(jButton_Them)
                 .addGap(6, 6, 6)
                 .addComponent(jButton_Xoa)
@@ -251,36 +290,6 @@ public class DanhMucKHView extends javax.swing.JFrame {
                 .addComponent(jButton_Luu)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton_Exit))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(161, 161, 161)
-                .addComponent(jLabel1))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(128, 128, 128)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 633, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addGap(39, 39, 39)
-                        .addComponent(jTextField_MaKH, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(28, 28, 28)
-                        .addComponent(jTextField_TenKH, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(74, 74, 74)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(61, 61, 61)
-                        .addComponent(jTextField_DiaChiKH, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField_SDTKH, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -289,10 +298,11 @@ public class DanhMucKHView extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(7, 7, 7)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(13, 13, 13)
+                .addGap(10, 10, 10)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(jTextField_MaKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel6)
+                        .addComponent(jTextField_MaKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addComponent(jLabel4))
@@ -307,8 +317,8 @@ public class DanhMucKHView extends javax.swing.JFrame {
                             .addComponent(jLabel2)
                             .addComponent(jLabel5))))
                 .addGap(13, 13, 13)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(13, 13, 13)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton_Xoa)
                     .addComponent(jButton_Them)
@@ -336,22 +346,18 @@ public class DanhMucKHView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_ExitActionPerformed
 
     private void jButton_LuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_LuuActionPerformed
-        // Xoa du lieu bang:
-        try {
-            String connectionUrl = "jdbc:sqlserver://localhost:1433;DatabaseName=DBComputerStore;user=sa;password=123456;encrypt=true;trustServerCertificate=true";
-            Connection con = DriverManager.getConnection(connectionUrl);
-            String sql = "DELETE FROM tblKhach;";
-            PreparedStatement pst = con.prepareStatement(sql);
-            pst.executeUpdate();
-            pst.close();
-            con.close();
-        } catch (Exception e) {
-            System.out.println();
-            e.printStackTrace();
+        // Xoa du lieu bi xoa
+        for (int i = 0; i < maXoa.size(); i++) {
+            KhachHang.xoaDuLieuKhach(maXoa.get(i));
         }
+        
         // Them du lieu tu list vao bang:
         for (int i = 0; i < list.size(); i++) {
-            list.get(i).nhapDuLieuKhach();
+            if(i < listSize) {
+                list.get(i).suaDuLieuKhach();
+            } else {
+                list.get(i).nhapDuLieuKhach();
+            }
         }
         jButton_Luu.setEnabled(false);
         JOptionPane.showMessageDialog(null, "Lưu dữ liệu thành công!", "Thực hiện thành công", JOptionPane.INFORMATION_MESSAGE);
@@ -390,6 +396,8 @@ public class DanhMucKHView extends javax.swing.JFrame {
         if(jTable_KhachHang.getSelectedRowCount() == 1) {
             int selectedRow = jTable_KhachHang.getSelectedRow();
             String maKH = dtm.getValueAt(selectedRow, 1).toString();
+            if(selectedRow < listSize) listSize--;
+            maXoa.add(maKH);
             for (int i = 0; i < list.size(); i++) {
                 if(list.get(i).getMaKH().equals(maKH)) {
                     list.remove(i);
@@ -414,7 +422,7 @@ public class DanhMucKHView extends javax.swing.JFrame {
 
     private void jButton_ThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThemActionPerformed
         // TODO add your handling code here:
-        ThemKH themKH = new ThemKH(list);
+        Khach_ThemView themKH = new Khach_ThemView(list);
         themKH.setLocationRelativeTo(null);
         themKH.setVisible(true);
     }//GEN-LAST:event_jButton_ThemActionPerformed

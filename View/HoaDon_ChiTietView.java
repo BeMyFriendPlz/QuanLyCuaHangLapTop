@@ -3,18 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package codeptit.quanlycuahangmaytinh.View;
+package codeptit.QuanLyCuaHangLapTop.View;
 
-import codeptit.quanlycuahangmaytinh.Model.ChiTietHoaDon;
-import codeptit.quanlycuahangmaytinh.Model.HoaDon;
-import codeptit.quanlycuahangmaytinh.Model.KhachHang;
-import codeptit.quanlycuahangmaytinh.Model.NhanVien;
-import codeptit.quanlycuahangmaytinh.Model.SanPham;
-import codeptit.quanlycuahangmaytinh.Model.TaiKhoan;
+import codeptit.QuanLyCuaHangLapTop.Model.ChiTietHoaDon;
+import codeptit.QuanLyCuaHangLapTop.Model.HoaDon;
+import codeptit.QuanLyCuaHangLapTop.Model.KhachHang;
+import codeptit.QuanLyCuaHangLapTop.Model.NhanVien;
+import codeptit.QuanLyCuaHangLapTop.Model.SanPham;
+import codeptit.QuanLyCuaHangLapTop.Model.TaiKhoan;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.PrintJob;
-import java.awt.Toolkit;
 import java.awt.print.PageFormat;
 import java.awt.print.Printable;
 import java.awt.print.PrinterException;
@@ -28,13 +26,13 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Admin
  */
-public class ChiTietHoaDonView extends javax.swing.JFrame {
+public class HoaDon_ChiTietView extends javax.swing.JFrame {
     String maHD;
     /**
      * Creates new form ChiTietHoaDonView
      * @param maHD
      */
-    public ChiTietHoaDonView(String maHD) {
+    public HoaDon_ChiTietView(String maHD) {
         this.maHD = maHD; 
         initComponents();
         editJtext();

@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package codeptit.quanlycuahangmaytinh.View;
+package codeptit.QuanLyCuaHangLapTop.View;
 
-import codeptit.quanlycuahangmaytinh.Model.HoaDon;
-import codeptit.quanlycuahangmaytinh.Model.TaiKhoan;
+import codeptit.QuanLyCuaHangLapTop.Model.HoaDon;
+import codeptit.QuanLyCuaHangLapTop.Model.TaiKhoan;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -23,12 +23,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Admin
  */
-public class TimKiemHoaDonView extends javax.swing.JFrame {
+public class HoaDon_TimKiemView extends javax.swing.JFrame {
 
     /**
      * Creates new form TimKiemHoaDonView
      */
-    public TimKiemHoaDonView() {
+    public HoaDon_TimKiemView() {
         initComponents();
         showHD();
     }
@@ -286,7 +286,7 @@ public class TimKiemHoaDonView extends javax.swing.JFrame {
             jTextField_Thang.setText(temp[1]);
             jTextField_Nam.setText(temp[2]);
         } else {
-            ChiTietHoaDonView cthdv = new ChiTietHoaDonView(dtm.getValueAt(selectedRow, 1).toString());
+            HoaDon_ChiTietView cthdv = new HoaDon_ChiTietView(dtm.getValueAt(selectedRow, 1).toString());
             cthdv.setLocationRelativeTo(null);
             cthdv.setVisible(true);
         }

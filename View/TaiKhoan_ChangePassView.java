@@ -3,22 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package codeptit.quanlycuahangmaytinh.View;
+package codeptit.QuanLyCuaHangLapTop.View;
 
-import codeptit.quanlycuahangmaytinh.Model.TaiKhoan;
+import codeptit.QuanLyCuaHangLapTop.Model.TaiKhoan;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author Admin
  */
-public class ChangePassView extends javax.swing.JFrame {
+public class TaiKhoan_ChangePassView extends javax.swing.JFrame {
     private String tk;
     private TaiKhoan taiKhoan;
     /**
      * Creates new form ChangePassView
      */
-    public ChangePassView(String tk) {
+    public TaiKhoan_ChangePassView(String tk) {
         this.tk = tk;
         taiKhoan = new TaiKhoan();
         initComponents();
@@ -84,7 +84,7 @@ public class ChangePassView extends javax.swing.JFrame {
             }
         });
 
-        jButton_Change.setBackground(new java.awt.Color(0, 0, 204));
+        jButton_Change.setBackground(new java.awt.Color(102, 102, 255));
         jButton_Change.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton_Change.setForeground(new java.awt.Color(255, 255, 255));
         jButton_Change.setIcon(new javax.swing.ImageIcon("D:\\Dai Hoc\\LapTrinhHuongDoiTuong\\QuanLyCuaHangMayTinh\\icon\\Reload-icon.png")); // NOI18N

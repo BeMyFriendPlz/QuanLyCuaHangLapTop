@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package codeptit.quanlycuahangmaytinh.View;
+package codeptit.QuanLyCuaHangLapTop.View;
 
-import codeptit.quanlycuahangmaytinh.Model.NhaCungCap;
+import codeptit.QuanLyCuaHangLapTop.Model.NhaCungCap;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -22,15 +22,23 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Admin
  */
-public class DanhMucNhaCCView extends javax.swing.JFrame {
+public class NhaCC_DanhMucView extends javax.swing.JFrame {
     private ArrayList<NhaCungCap> list;
+    private int listSize;
+    private List<String> maXoa;
     static int soMNCC;
     /**
      * Creates new form DanhMucKHView
      */
-    public DanhMucNhaCCView() {
+    public NhaCC_DanhMucView() {
         this.list = NhaCungCap.NCCList();
-        soMNCC = Integer.valueOf(list.get(list.size()-1).getMaNCC().substring(3,6));
+        maXoa = new ArrayList<>();
+        listSize = list.size();
+        if(list.isEmpty()) {
+            soMNCC = 0;
+        } else {
+            soMNCC = Integer.valueOf(list.get(list.size()-1).getMaNCC().substring(3,6));
+        }
         initComponents();
         showNCC(list);
         jTextField_MaNCC.setEditable(false);
@@ -287,28 +295,24 @@ public class DanhMucNhaCCView extends javax.swing.JFrame {
 
     private void jButton_ThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThemActionPerformed
         // TODO add your handling code here:
-        ThemNCC themNCC = new ThemNCC(list);
+        NhaCC_Them themNCC = new NhaCC_Them(list);
         themNCC.setLocationRelativeTo(null);
         themNCC.setVisible(true);
     }//GEN-LAST:event_jButton_ThemActionPerformed
 
     private void jButton_LuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_LuuActionPerformed
-        // Xoa du lieu bang:
-        try {
-            String connectionUrl = "jdbc:sqlserver://localhost:1433;DatabaseName=DBComputerStore;user=sa;password=123456;encrypt=true;trustServerCertificate=true";
-            Connection con = DriverManager.getConnection(connectionUrl);
-            String sql = "DELETE FROM tblNhaCC;";
-            PreparedStatement pst = con.prepareStatement(sql);
-            pst.executeUpdate();
-            pst.close();
-            con.close();
-        } catch (Exception e) {
-            System.out.println();
-            e.printStackTrace();
+        // Xoa du lieu bi xoa
+        for (int i = 0; i < maXoa.size(); i++) {
+            NhaCungCap.xoaDuLieuNCC(maXoa.get(i));
         }
+        
         // Them du lieu tu list vao bang:
         for (int i = 0; i < list.size(); i++) {
-            list.get(i).nhapDuLieuNCC();
+            if(i < listSize) {
+                list.get(i).suaDuLieuNCC();
+            } else {
+                list.get(i).nhapDuLieuNCC();
+            }
         }
         jButton_Luu.setEnabled(false);
         JOptionPane.showMessageDialog(null, "Lưu dữ liệu thành công!", "Thực hiện thành công", JOptionPane.INFORMATION_MESSAGE);
@@ -333,6 +337,8 @@ public class DanhMucNhaCCView extends javax.swing.JFrame {
         if(jTable_NCC.getSelectedRowCount() == 1) {
             int selectedRow = jTable_NCC.getSelectedRow();
             String maNCC = dtm.getValueAt(selectedRow, 1).toString();
+            if(selectedRow < listSize) listSize--;
+            maXoa.add(maNCC);
             for (int i = 0; i < list.size(); i++) {
                 if(list.get(i).getMaNCC().equals(maNCC)) {
                     list.remove(i);

@@ -1,6 +1,6 @@
-package codeptit.quanlycuahangmaytinh.Test;
+package codeptit.QuanLyCuaHangLapTop.Test;
 
-import codeptit.quanlycuahangmaytinh.View.LoginSysView;
+import codeptit.QuanLyCuaHangLapTop.View.LoginSysView;
 
 
 public class Main {

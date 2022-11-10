@@ -3,12 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package codeptit.quanlycuahangmaytinh.View;
+package codeptit.QuanLyCuaHangLapTop.View;
 
-import codeptit.quanlycuahangmaytinh.Model.NhanVien;
+import codeptit.QuanLyCuaHangLapTop.Model.NhanVien;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -17,13 +16,13 @@ import javax.swing.JOptionPane;
  *
  * @author Admin
  */
-public class SettingView extends javax.swing.JFrame {
+public class TaiKhoan_SettingView extends javax.swing.JFrame {
     private NhanVien nhanVien;
     private String tk;
     /**
      * Creates new form SettingView
      */
-    public SettingView(String tk) {
+    public TaiKhoan_SettingView(String tk) {
         this.tk = tk;
         nhanVien = new NhanVien();
         initComponents();
@@ -260,7 +259,7 @@ public class SettingView extends javax.swing.JFrame {
             nhanVien.setDiaChi(jTextField_DiaChi.getText());
             nhanVien.setDienThoai(jTextField_SDT.getText());
         } catch (ParseException ex) {
-            Logger.getLogger(SettingView.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TaiKhoan_SettingView.class.getName()).log(Level.SEVERE, null, ex);
         }
         nhanVien.nhapDuLieuUser();
         JOptionPane.showMessageDialog(null, "Cập nhật thông tin thành công!", "Updating Information", JOptionPane.INFORMATION_MESSAGE);

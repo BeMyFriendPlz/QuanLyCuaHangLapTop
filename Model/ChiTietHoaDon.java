@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package codeptit.quanlycuahangmaytinh.Model;
+package codeptit.QuanLyCuaHangLapTop.Model;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,7 +11,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
@@ -110,6 +109,27 @@ public class ChiTietHoaDon {
             String sql = "SELECT * FROM tblChiTietHDBan WHERE MaHD = ?";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, maHD);
+            ResultSet rs = pst.executeQuery();
+            while(rs.next()) {
+                ChiTietHoaDon cthd = new ChiTietHoaDon(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getLong(4), rs.getInt(5), rs.getLong(6));
+                list.add(cthd);
+            }
+            pst.close();
+            con.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return list;
+    }
+    
+    public static ArrayList<ChiTietHoaDon> GetChiTietHoaDons(String maSP) {
+        ArrayList<ChiTietHoaDon> list = new ArrayList<>();
+        try {
+            String connectionUrl = "jdbc:sqlserver://localhost:1433;DatabaseName=DBComputerStore;user=sa;password=123456;encrypt=true;trustServerCertificate=true";
+            Connection con = DriverManager.getConnection(connectionUrl);
+            String sql = "SELECT * FROM tblChiTietHDBan WHERE MaSP = ?";
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, maSP);
             ResultSet rs = pst.executeQuery();
             while(rs.next()) {
                 ChiTietHoaDon cthd = new ChiTietHoaDon(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getLong(4), rs.getInt(5), rs.getLong(6));

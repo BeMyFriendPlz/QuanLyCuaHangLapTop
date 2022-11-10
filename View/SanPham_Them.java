@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package codeptit.quanlycuahangmaytinh.View;
+package codeptit.QuanLyCuaHangLapTop.View;
 
-import codeptit.quanlycuahangmaytinh.Model.NhaCungCap;
-import codeptit.quanlycuahangmaytinh.Model.SanPham;
+import codeptit.QuanLyCuaHangLapTop.Model.NhaCungCap;
+import codeptit.QuanLyCuaHangLapTop.Model.SanPham;
 import java.awt.Image;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -21,7 +21,7 @@ import javax.swing.JOptionPane;
  *
  * @author Admin
  */
-public class ThemSP extends javax.swing.JFrame {
+public class SanPham_Them extends javax.swing.JFrame {
     private ArrayList<SanPham> list;
     private SanPham sp;
     private String filename = null;
@@ -29,7 +29,7 @@ public class ThemSP extends javax.swing.JFrame {
     /**
      * Creates new form ThemKH
      */
-    public ThemSP(ArrayList<SanPham> list) {
+    public SanPham_Them(ArrayList<SanPham> list) {
         this.list = list;
         initComponents();
         showJComboBox();
@@ -270,12 +270,8 @@ public class ThemSP extends javax.swing.JFrame {
     private void jButton_ThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThemActionPerformed
         // TODO add your handling code here:
         String maSP;
-        if(list.size() == 0) {
-            maSP = "001";
-        } else {
-            maSP = String.valueOf(++DanhMucSanPhamView.soMSP);
-            while (maSP.length() < 3) maSP = "0" + maSP;
-        }
+        maSP = String.valueOf(++SanPham_DanhMucView.soMSP);
+        while (maSP.length() < 3) maSP = "0" + maSP;
         maSP = "SP" + maSP;
         String tenSP = jTextField_TenSP.getText();
         String nhaCC = (String) jComboBox_NCC.getSelectedItem();
@@ -289,8 +285,8 @@ public class ThemSP extends javax.swing.JFrame {
             String[] temp = nhaCC.split("-");
             sp = new SanPham(maSP, tenSP, temp[0], Integer.valueOf(soLuong), Long.valueOf(giaNhap), Long.valueOf(giaBan), SP_image, ghiChu);
             list.add(sp);
-            DanhMucSanPhamView.showSanPham(list);
-            DanhMucSanPhamView.jButton_Luu.setEnabled(true);
+            SanPham_DanhMucView.showSanPham(list);
+            SanPham_DanhMucView.jButton_Luu.setEnabled(true);
             JOptionPane.showMessageDialog(null, "Đã thêm sản phẩm thành công!", "Nhập dữ liệu thành công", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_jButton_ThemActionPerformed

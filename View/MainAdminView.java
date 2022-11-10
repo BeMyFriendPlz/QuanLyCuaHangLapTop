@@ -9,12 +9,12 @@ package codeptit.QuanLyCuaHangLapTop.View;
  *
  * @author Admin
  */
-public class MainUserView extends javax.swing.JFrame {
+public class MainAdminView extends javax.swing.JFrame {
     private String tk;
     /**
      * Creates new form MainView
      */
-    public MainUserView(String tk) {
+    public MainAdminView(String tk) {
         this.tk = tk;
         initComponents();
     }
@@ -50,6 +50,8 @@ public class MainUserView extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         jMenuItem_DangXuat = new javax.swing.JMenuItem();
         jMenu_DanhMuc = new javax.swing.JMenu();
+        jMenuItem_TaiKhoan = new javax.swing.JMenuItem();
+        jMenuItem_NhanVien = new javax.swing.JMenuItem();
         jMenuItem_KhachHang = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMenuItem_SanPham = new javax.swing.JMenuItem();
@@ -57,7 +59,8 @@ public class MainUserView extends javax.swing.JFrame {
         jMenu_HoaDon = new javax.swing.JMenu();
         jMenuItem_HDBan = new javax.swing.JMenuItem();
         jSeparator4 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem_TimKiem = new javax.swing.JMenuItem();
+        jMenu_DoanhThu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Hệ Thống Quản Lý Cửa Hàng Bán Máy Tính");
@@ -235,6 +238,24 @@ public class MainUserView extends javax.swing.JFrame {
 
         jMenu_DanhMuc.setText("Danh Mục");
 
+        jMenuItem_TaiKhoan.setIcon(new javax.swing.ImageIcon("D:\\Dai Hoc\\LapTrinhHuongDoiTuong\\QuanLyCuaHangMayTinh\\icon\\client-account-template-icon.png")); // NOI18N
+        jMenuItem_TaiKhoan.setText("Tài Khoản");
+        jMenuItem_TaiKhoan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem_TaiKhoanActionPerformed(evt);
+            }
+        });
+        jMenu_DanhMuc.add(jMenuItem_TaiKhoan);
+
+        jMenuItem_NhanVien.setIcon(new javax.swing.ImageIcon("D:\\Dai Hoc\\LapTrinhHuongDoiTuong\\QuanLyCuaHangMayTinh\\icon\\engineer-icon.png")); // NOI18N
+        jMenuItem_NhanVien.setText("Nhân Viên");
+        jMenuItem_NhanVien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem_NhanVienActionPerformed(evt);
+            }
+        });
+        jMenu_DanhMuc.add(jMenuItem_NhanVien);
+
         jMenuItem_KhachHang.setIcon(new javax.swing.ImageIcon("D:\\Dai Hoc\\LapTrinhHuongDoiTuong\\QuanLyCuaHangMayTinh\\icon\\User-Group-icon.png")); // NOI18N
         jMenuItem_KhachHang.setText("Khách Hàng");
         jMenuItem_KhachHang.addActionListener(new java.awt.event.ActionListener() {
@@ -277,16 +298,24 @@ public class MainUserView extends javax.swing.JFrame {
         jMenu_HoaDon.add(jMenuItem_HDBan);
         jMenu_HoaDon.add(jSeparator4);
 
-        jMenuItem1.setIcon(new javax.swing.ImageIcon("D:\\Dai Hoc\\LapTrinhHuongDoiTuong\\QuanLyCuaHangMayTinh\\icon\\Zoom-icon.png")); // NOI18N
-        jMenuItem1.setText("Tìm kiếm");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem_TimKiem.setIcon(new javax.swing.ImageIcon("D:\\Dai Hoc\\LapTrinhHuongDoiTuong\\QuanLyCuaHangMayTinh\\icon\\Zoom-icon.png")); // NOI18N
+        jMenuItem_TimKiem.setText("Tìm kiếm");
+        jMenuItem_TimKiem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                jMenuItem_TimKiemActionPerformed(evt);
             }
         });
-        jMenu_HoaDon.add(jMenuItem1);
+        jMenu_HoaDon.add(jMenuItem_TimKiem);
 
         jMenuBar1.add(jMenu_HoaDon);
+
+        jMenu_DoanhThu.setText("Doanh Thu");
+        jMenu_DoanhThu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu_DoanhThuMouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(jMenu_DoanhThu);
 
         setJMenuBar(jMenuBar1);
 
@@ -343,12 +372,33 @@ public class MainUserView extends javax.swing.JFrame {
         hoaDonBanView.setVisible(true);
     }//GEN-LAST:event_jMenuItem_HDBanActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void jMenuItem_TimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_TimKiemActionPerformed
         // TODO add your handling code here:
         HoaDon_TimKiemView timKiemHoaDonView = new HoaDon_TimKiemView();
         timKiemHoaDonView.setLocationRelativeTo(null);
         timKiemHoaDonView.setVisible(true);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_jMenuItem_TimKiemActionPerformed
+
+    private void jMenuItem_NhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_NhanVienActionPerformed
+        // TODO add your handling code here:
+        NhanVien_DanhMucView nhanVien_DanhMucView = new NhanVien_DanhMucView();
+        nhanVien_DanhMucView.setLocationRelativeTo(null);
+        nhanVien_DanhMucView.setVisible(true);
+    }//GEN-LAST:event_jMenuItem_NhanVienActionPerformed
+
+    private void jMenuItem_TaiKhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_TaiKhoanActionPerformed
+        // TODO add your handling code here:
+        TaiKhoan_DanhMucView taiKhoan_DanhMucView = new TaiKhoan_DanhMucView();
+        taiKhoan_DanhMucView.setLocationRelativeTo(null);
+        taiKhoan_DanhMucView.setVisible(true);
+    }//GEN-LAST:event_jMenuItem_TaiKhoanActionPerformed
+
+    private void jMenu_DoanhThuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu_DoanhThuMouseClicked
+        // TODO add your handling code here:
+        DoanhThu_View doanhThu_View = new DoanhThu_View();
+        doanhThu_View.setLocationRelativeTo(null);
+        doanhThu_View.setVisible(true);
+    }//GEN-LAST:event_jMenu_DoanhThuMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -366,15 +416,18 @@ public class MainUserView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem_DangXuat;
     private javax.swing.JMenuItem jMenuItem_DoiMK;
     private javax.swing.JMenuItem jMenuItem_HDBan;
     private javax.swing.JMenuItem jMenuItem_KhachHang;
     private javax.swing.JMenuItem jMenuItem_NhaCC;
+    private javax.swing.JMenuItem jMenuItem_NhanVien;
     private javax.swing.JMenuItem jMenuItem_SanPham;
+    private javax.swing.JMenuItem jMenuItem_TaiKhoan;
     private javax.swing.JMenuItem jMenuItem_ThongTinCaNhan;
+    private javax.swing.JMenuItem jMenuItem_TimKiem;
     private javax.swing.JMenu jMenu_DanhMuc;
+    private javax.swing.JMenu jMenu_DoanhThu;
     private javax.swing.JMenu jMenu_HoaDon;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu.Separator jSeparator1;

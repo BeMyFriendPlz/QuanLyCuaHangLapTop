@@ -3,27 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package codeptit.quanlycuahangmaytinh.View;
+package codeptit.QuanLyCuaHangLapTop.View;
 
-import codeptit.quanlycuahangmaytinh.Model.KhachHang;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import codeptit.QuanLyCuaHangLapTop.Model.KhachHang;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author Admin
  */
-public class ThemKH extends javax.swing.JFrame {
+public class Khach_ThemView extends javax.swing.JFrame {
     private ArrayList<KhachHang> list;
     private KhachHang kh;
     /**
      * Creates new form ThemKH
      */
-    public ThemKH(ArrayList<KhachHang> list) {
+    public Khach_ThemView(ArrayList<KhachHang> list) {
         this.list = list;
         initComponents();
     }
@@ -179,12 +175,8 @@ public class ThemKH extends javax.swing.JFrame {
     private void jButton_ThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThemActionPerformed
         // TODO add your handling code here:
         String maKH;
-        if(list.isEmpty()) {
-            maKH = "001";
-        } else {
-            maKH = String.valueOf(++DanhMucKHView.soMKH);
-            while (maKH.length() < 3) maKH = "0" + maKH;
-        }
+        maKH = String.valueOf(++Khach_DanhMucView.soMKH);
+        while (maKH.length() < 3) maKH = "0" + maKH;
         maKH = "KH" + maKH;
         String tenKH = jTextField_TenKH.getText();
         String diaChi = jTextField_DiaChi.getText();
@@ -194,8 +186,8 @@ public class ThemKH extends javax.swing.JFrame {
         } else {
             kh = new KhachHang(maKH, tenKH, diaChi, dienThoai);
             list.add(kh);
-            DanhMucKHView.showKhach(list);
-            DanhMucKHView.jButton_Luu.setEnabled(true);
+            Khach_DanhMucView.showKhach(list);
+            Khach_DanhMucView.jButton_Luu.setEnabled(true);
             JOptionPane.showMessageDialog(null, "Đã thêm khách hàng thành công!", "Nhập dữ liệu thành công", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_jButton_ThemActionPerformed

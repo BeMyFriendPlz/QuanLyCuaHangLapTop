@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package codeptit.quanlycuahangmaytinh.View;
+package codeptit.QuanLyCuaHangLapTop.View;
 
-import codeptit.quanlycuahangmaytinh.Model.ChiTietHoaDon;
-import codeptit.quanlycuahangmaytinh.Model.HoaDon;
-import codeptit.quanlycuahangmaytinh.Model.KhachHang;
-import codeptit.quanlycuahangmaytinh.Model.NhanVien;
-import codeptit.quanlycuahangmaytinh.Model.SanPham;
-import codeptit.quanlycuahangmaytinh.Model.TaiKhoan;
+import codeptit.QuanLyCuaHangLapTop.Model.ChiTietHoaDon;
+import codeptit.QuanLyCuaHangLapTop.Model.HoaDon;
+import codeptit.QuanLyCuaHangLapTop.Model.KhachHang;
+import codeptit.QuanLyCuaHangLapTop.Model.NhanVien;
+import codeptit.QuanLyCuaHangLapTop.Model.SanPham;
+import codeptit.QuanLyCuaHangLapTop.Model.TaiKhoan;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -25,12 +25,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Admin
  */
-public class HoaDonBanView extends javax.swing.JFrame {
+public class HoaDon_BanView extends javax.swing.JFrame {
     private String tenTK;
     /**
      * Creates new form HoaDonBanView
      */
-    public HoaDonBanView(String tk) {
+    public HoaDon_BanView(String tk) {
         this.tenTK = tk;
         initComponents();
         editJText();
@@ -616,7 +616,7 @@ public class HoaDonBanView extends javax.swing.JFrame {
                 HoaDon hd = new HoaDon(maHD, maTK, maKH, ngayBan, tongTien);
                 hd.nhapHoaDon();
             } catch (ParseException ex) {
-                Logger.getLogger(HoaDonBanView.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(HoaDon_BanView.class.getName()).log(Level.SEVERE, null, ex);
             }
 
             // Nhap chi tiet hoa don
@@ -657,7 +657,7 @@ public class HoaDonBanView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_HuyHDActionPerformed
 
     private void jButton_InHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_InHDActionPerformed
-        ChiTietHoaDonView cthdv = new ChiTietHoaDonView(jTextField_MaHD.getText());
+        HoaDon_ChiTietView cthdv = new HoaDon_ChiTietView(jTextField_MaHD.getText());
         cthdv.InHoaDon();
         
         // Reset du lieu:

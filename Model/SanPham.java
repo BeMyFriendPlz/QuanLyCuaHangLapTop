@@ -1,4 +1,4 @@
-package codeptit.quanlycuahangmaytinh.Model;
+package codeptit.QuanLyCuaHangLapTop.Model;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -112,6 +112,43 @@ public class SanPham {
         }
     }
     
+    public void suaDuLieuSanPham() {
+        try {
+            String connectionUrl = "jdbc:sqlserver://localhost:1433;DatabaseName=DBComputerStore;user=sa;password=123456;encrypt=true;trustServerCertificate=true";
+            con = DriverManager.getConnection(connectionUrl);
+            String sql = "UPDATE tblSanPham SET TenSP = ?, MaNCC = ?, SoLuong = ?, DonGiaNhap = ?, DonGiaBan = ?, Anh = ?, GhiChu = ? WHERE MaSP = ?";
+            PreparedStatement pst = con.prepareStatement(sql); 
+            pst.setString(1, tenSP);
+            pst.setString(2, nhaCC);
+            pst.setInt(3, soLuong);
+            pst.setLong(4, giaNhap);
+            pst.setLong(5, giaBan);
+            pst.setBytes(6, anh);
+            pst.setString(7, ghiChu);
+            pst.setString(8, maSP);
+            pst.executeUpdate();
+            pst.close();
+            con.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    public static void xoaDuLieuSanPham(String maSP) {
+        try {
+            String connectionUrl = "jdbc:sqlserver://localhost:1433;DatabaseName=DBComputerStore;user=sa;password=123456;encrypt=true;trustServerCertificate=true";
+            Connection con = DriverManager.getConnection(connectionUrl);
+            String sql = "DELETE FROM tblSanPham WHERE MaSP = ?";
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(8, maSP);
+            pst.executeUpdate();
+            pst.close();
+            con.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
     public static ArrayList<SanPham> sanPhamList() {
         ArrayList<SanPham> list = new ArrayList<>();
         try {
@@ -188,5 +225,25 @@ public class SanPham {
             e.printStackTrace();
         }
         return tenSP;
+    }
+    
+    public static String getNCC(String maSP) {
+        String maNCC = null;
+        try {
+            String connectionUrl = "jdbc:sqlserver://localhost:1433;DatabaseName=DBComputerStore;user=sa;password=123456;encrypt=true;trustServerCertificate=true";
+            Connection con = DriverManager.getConnection(connectionUrl);
+            String sql = "SELECT maNCC FROM tblSanPham WHERE MaSP = ?";
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, maSP);
+            ResultSet rs = pst.executeQuery();
+            while(rs.next()) {
+                maNCC = rs.getString(1);
+            }
+            pst.close();
+            con.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return maNCC;
     }
 }
